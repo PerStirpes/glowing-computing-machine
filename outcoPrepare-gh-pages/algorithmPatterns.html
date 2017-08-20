@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Outco Prepare</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<h1><a href="index.html" title="">HOME</a></h1>
+<br/>
+<br/>
+
+
+<h1>Algorithm Patterns</h1>
+
+<h2>Multiple Pointers</h2>
+
+<p>Iterating through an algorithm starting at mulitple places. Saves time.</p>
+
+<b>// SORTING A BIT ARRAY USING MULTIPLE POINTERS</b><br/>
+<br/>
+<img src="bitSort.png" alt="">
+<!-- function bitArraySort(array){
+  
+  // variables
+  // left equals 0
+  let left = 0
+  // right equals array length -1
+  let right = array.length -1;
+  let temp;
+  
+  // while left does not equal right 
+  while(left < right){
+    // while left equals 0
+    while(array[left] === 0){
+      // increment left
+      left ++;
+    }
+    
+    // while right equals 1 
+    while(array[right] === 1){
+      // decrement right
+      right --;
+    }
+    
+    // swap left and right
+    if(left < right) {
+         // swap the left and right values
+        [array[left], array[right]] = [array[right], array[left]];
+      }
+  }
+  // return array
+  return array;
+}
+
+// bitArraySort([0,1,1,0,0,1,0,1,0]); //[0,0,0,0,0,1,1,1,1]
+bitArraySort([1,1,1,1,0,0,0,0]); //[0,0,0,0,1,1,1,1]
+ -->
+
+<p><!-- pagebreak --></p> 
+<b>// CHALLENGE 1 : SORTED TWO SUM USING MULTIPLE POINTERS</b><br/>
+<br/>
+// Given a sorted array of integers and a target value, determine if there <br/>exists two integers in the array that sum up to the target value.<br/>
+<br/>
+// See if you can solve this in O(N) time and O(1) auxiliary space.<br/>
+<br/>
+<img src="sortedTwoSum.png" alt="">
+<!-- function sortedTwoSum(array, target){
+  
+  // variables
+  // left equals 0
+  let left = 0;
+  // right equals array length -1
+  let right = array.length -1;
+  let finalArray = [];
+  
+  // while left is less than right
+  while(left < right){
+    // if array[left] + array[right] equals target
+    if(array[left] + array[right] === target){
+      // return array[left], array[right]
+      finalArray.push(array[left]);
+      finalArray.push(array[right]);
+      return finalArray;
+    }
+    
+    // if array[left] + array[right] is less than target
+    if((array[left] + array[right]) < target){
+      // increment left
+      left ++;
+    }
+    
+    // if array[left] + array[right] is greater than target
+    if((array[left] + array[right]) > target){
+      // decrement right
+      right --;
+    }
+  }
+  
+  // return false
+  return false;
+  
+}
+
+// sortedTwoSum([1,2,3,4,5,6,7,8,9], 17); // 8, 9
+// sortedTwoSum([1,3,4,5,6,9], 8); // 3, 5
+// sortedTwoSum([100, 200, 250, 300, 700], 500); // 200, 300
+sortedTwoSum([1,2,3,4,5,6,7,8,9], 500); // false -->
+
+<p><!-- pagebreak --></p> 
+<b>// CHALLENGE 2: MERGE 2 SORTED ARRAYS USING MULTIPLE POINTERS</b><br/>
+<br/>
+// Given two sorted arrays of integers, combine the values into one sorted <br/>array<br/>
+<br/>
+// See if you can solve this in O(N+M) time and O(N+M) auxiliary space.<br/>
+<br/>
+
+<img src="mergeTwoSortedArrays1.png" alt="">
+<br/>
+<img src="mergeTwoSortedArrays2.png" alt="">
+<!-- function mergeTwoSortedArrays(array1, array2){
+  
+  // variables
+  // resultsArray
+  let resultsArray = [];
+  // array1Counter equals 0
+  let array1Counter = 0;
+  // array2Counter equals 0
+  let array2Counter = 0;
+  
+  // while array1Counter is less than array1 length and array2Counter is less than array2 length
+  while(array1Counter < array1.length && array2Counter < array2.length){
+    // if array1[array1Counter] is less than array2[array2Counter]
+    if(array1[array1Counter] < array2[array2Counter]){
+      // resultsArray push array1[array1Counter]
+      resultsArray.push(array1[array1Counter]);
+      // array1Counter increment
+      array1Counter ++;
+    }
+  
+    // if array2[array2Counter] is less than array1[array1Counter]
+    if(array2[array2Counter] < array1[array1Counter]){
+      // push array2[array2Counter] into resultsArray
+      resultsArray.push(array2[array2Counter]);
+      // array2Counter increment
+      array2Counter ++;
+    }
+    
+    if(array1[array1Counter] === array2[array2Counter]){
+      resultsArray.push(array1[array1Counter]);
+      resultsArray.push(array2[array2Counter]);
+      array1Counter ++;
+      array2Counter ++;
+    }
+  }
+  
+  // if array1Counter equals array1 length -1
+  if(array1Counter === array1.length){
+    // while array2Counter is less than array2 length -1
+    while(array2Counter < array2.length){
+      // push array2[array2Counter] into resultsArray
+      resultsArray.push(array2[array2Counter]);
+      array2Counter ++;
+    }
+  }
+  
+  // if array2Counter equals array2 length -1
+  if(array2Counter === array2.length){
+    // while array1Counter is less than array1 length -1
+    while(array1Counter < array1.length){
+      // push array1[array1Counter] into resultsArray
+      resultsArray.push(array1[array1Counter]);
+      array1Counter ++;
+    }
+  }
+  
+  // return resultsArray
+  return resultsArray;
+}
+
+mergeTwoSortedArrays([1,3,5], [2,4,6,8,10]); //[1,2,3,4,5,6,8,10]
+// mergeTwoSortedArrays([1,3,6,8,9], [1,2,4,6,19]); //[1,1,2,3,4,6,6,8,9,19] -->
+
+<p><!-- pagebreak --></p> 
+<h2>Frequency Counters</h2>
+
+<p>Using a hashtable to count the number of times something appears.</p>
+
+
+<b>// EXAMPLE 1: TWO SUM NON SORTED ARRAY<br/></b>
+<br/>
+// Given an array of integers, and a target value determine if there are two integers that add to the sum.<br/>
+<br/>
+
+<img src="twoSort.png" alt="">
+<!-- function twoSort(array, target){
+  
+  // variables
+  // hashtable
+  let hashtable = {};
+  // resultsArray
+  let resultsArray = [];
+  
+  // for loop through array 
+  for(var i = 0; i< array.length; i++){
+    // element equals target minus element 
+    hashtable[array[i]] = target - array[i];
+  }
+  
+  // for in loop
+  for(x in hashtable){
+    // if prop is included in array 
+    if(array.includes(hashtable[x])){
+      // push key and prop to resultsArray
+      resultsArray.push(x);
+      resultsArray.push(hashtable[x]);
+    }
+  }
+  
+  // return resultsArray
+  if(resultsArray.length > 0){
+    return true;
+  }
+  
+  return false;
+  
+}
+
+twoSort([4,2,6,5,7,9,10], 13); //[4, 9] / [6, 7]
+// twoSort([1,5,8,9], 17); //[8,9]
+// twoSort([1,5,9], 17); //false -->
+
+
+
+<p><!-- pagebreak --></p> 
+<b>// CHALLENGE 1: Sort a Bit Array</b><br/><br/>
+// Given a bit array, return it sorted in-place (a bit array is simply an array that contains only bits, either 0 or 1).<br/>
+
+<br/>// See if you can solve this in O(N) time and O(1) auxiliary space.<br/>
+
+<br/>// Try to solve this using a frequency count rather than using multiple pointers, or using a comparison sort function.<br/>
+
+<img src="sortBitArray.png" alt="">
+
+<!-- function sortBitArray(array){
+  
+  // variables
+  // hashTable
+  let hashTable = {};
+  
+  // for loop through array 
+  for(var i = 0; i< array.length; i++){
+    // if element is in hashTable
+    if(hashTable.hasOwnProperty(array[i])){
+      // increment
+      hashTable[array[i]] ++;
+    }
+    // if element is not in hashTable
+    if(hashTable.hasOwnProperty(array[i]) === false){
+      // equal to 1 
+      hashTable[array[i]] = 1;
+    }
+  }
+  
+  // empty array 
+  array = [];
+  
+  // for loop
+  for(i=0;i< hashTable ["0"];i++){
+    // push 0s to array 
+    array.push(0);
+  }
+  
+  // for loop
+  for(i=0;i< hashTable["1"];i++){
+    // push 1s to array 
+    array.push(1);
+  }
+  
+  // return array
+  return array;
+}
+
+// sortBitArray([0, 1, 1, 0, 1, 1, 1, 0]); //[0, 0, 0, 1, 1, 1, 1, 1]
+sortBitArray([1, 0, 1, 0, 1, 1, 1, 0]); //[0, 0, 0, 1, 1, 1, 1, 1] -->
+
+<br/>
+
+
+<p><!-- pagebreak --></p> 
+<h2>Decrease and Conquer</h2>
+
+<p>Reducing a problem to a smaller problem to save algorithm time.  An expample is a Binary Search. A Binary Search is finding the index of a number in a sorted array.  Start in the middle and go left or right depending on if it's higher or lower. Then jump to the middle of that half, ect.</p>
+
+<b>// EXAMPLE 1: BINARY SEARCH</b><br/>
+// Given a sorted array of unique integers, and a target value determine the index of a matching value within the array. If there is not match, return -1.<br/>
+
+<img src="binarySearch.png" alt="">
+<!-- 
+function binarySearch(array, target){
+  
+  // variables
+  // beginning equals 0 
+  let beginning = 0;
+  // end equals array length -1
+  let end = array.length -1;
+  // mid 
+  let mid;
+  
+  // while beginning is less than end 
+  while(beginning <= end){
+    // mid equals math.floor end - beginning
+    mid = Math.floor((end + beginning) / 2);
+    // if array[mid] equals target 
+    if(array[mid] === target){
+      // return mid
+      return mid;
+    }
+    // if array[mid] is less than target 
+    if(array[mid] < target){
+      // beginning equals mid
+      beginning = mid + 1;
+    }
+    // if array[mid] is greater than target
+    else{
+      // end equals mid
+      end = mid - 1;
+    }
+  }
+  
+  // return -1
+  return -1;
+}
+
+
+binarySearch([1,3,4,5,6,7,8,10,11,13,15,17,20,22], 17); //11
+// binarySearch([1,3,4,5,6,7,8,10,11,13,15,17,20,22], 4); //2
+// binarySearch([1,3,4,5,6,7,8,10,11,13,15,17,20,22], 18); //-1 -->
+
+
+<p><!-- pagebreak --></p> 
+// <b>EXAMPLE 2: Greatest Common Divisor (GCD)</b><br/>
+// Given two integers, find the greatest common divisor (GCD).<br/>
+
+<img src="GCD.png" alt="">
+
+<!-- function GCD(a,b){
+  
+  // variables
+  // temp
+  let temp;
+  
+  //if inputs are negative
+  if(a < 0)
+    a *= -1;
+    if(b < 0)
+    b *= -1;
+  // if b is greater than a
+  if(b > a){
+    // while a does not equal 0
+    while(a !== 0){
+      // temp equals a 
+      temp = a;
+      // a equals b % a 
+      a = b % a;
+      // b equals temp
+      b = temp;
+    }
+    // return b 
+    return b;
+  }
+  
+  // if a is greater than b
+  if(a > b){
+    // while b does not equal 0
+    while(b !== 0){
+      // temp equals b 
+      temp =  b;
+      // b equals a % b 
+      b = a % b;
+      // a equals temp
+      a = temp;
+    }
+    // return a 
+    return a;
+  }
+}
+
+// GCD(52, 78); //26
+// GCD(78, 52); //26
+GCD(12, 9); //3 -->
+
+<p><!-- pagebreak --></p> 
+// <b>CHALLENGE 1 : Number of Ones in a Sorted Bit Array</b><br/>
+
+<br/>// Given a sorted bit array (values of either 0 or 1), determine the number of 1’s in the array.<br/>
+
+<br/>// Perform this in O(log(N)) time complexity.<br/>
+
+<img src="findNumberOfOnes1.png" alt="">
+<br/>
+<img src="findNumberOfOnes2.png" alt="">
+
+<!-- function findNumberOfOnes(array){
+  
+  // variables
+  // end 
+  let end = array.length -1;
+  // start 
+  let start = 0;
+  // mid
+  let mid;
+  // arrayLength
+  let arrayLength = array.length;
+  
+  // while start is less than or equal to end 
+  while(start <= end){
+    // mid equals math.floor start plus end divided by 2 
+    mid = Math.floor((start + end) / 2);
+    console.log(mid);
+    // if array[mid] equals 0 and array[mid+1] equals 1
+    if(array[mid] === 0 && array[mid+1] === 1){
+      // return arrayLength - mid
+      return arrayLength - mid -1;
+    }
+    if(array[mid] === 1 && array[mid-1] === 0){
+      return arrayLength - mid;
+    }
+    // if mid equals 0 and array[mid] equals 1 
+    if(mid === 0 && array[mid] === 1){
+      // return arrayLength
+      return arrayLength;
+    }
+    // if mid equals arrayLength -1 and array[mid] equals 0
+    if(mid === arrayLength -1 && array[mid] === 0){
+      // return 0
+      return 0;
+    }
+    // if array[mid] equals 1 and array[mid-1] equals 1 
+    if(array[mid] === 1 && array[mid-1] === 1){
+      // end equals mid + 1 
+      end = mid - 1;
+    }
+    // if array[mid] equls 0 and array[mid+1] equals 0
+    if(array[mid] === 0 && array[mid+1] === 0){
+      // start equals mid -1 
+      start = mid + 1;
+    }
+  }
+}
+
+// findNumberOfOnes([0,0,0,1,1,1,1,1,1,1,1]); //8
+// findNumberOfOnes([0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1]); //3
+// findNumberOfOnes([0,0,0]); //0
+findNumberOfOnes([1,1,1,1,1,1]); //6 -->
+
+
+<p><!-- pagebreak --></p> 
+<h2>Selection Sort</h2>
+
+<p>Find the smallest card. Swap it with the first card.<br/>
+Find the second-smallest card. Swap it with the second card.<br/>
+Find the third-smallest card. Swap it with the third card.<br/>
+Repeat finding the next-smallest card, and swapping it into the correct position until the array is sorted.<br/>
+This algorithm is called selection sort because it repeatedly selects the next-smallest element and swaps it into place.</p>
+
+
+SELECTION SORT <br/>
+<img src="selectionSort.png" alt="">
+<!-- // swap function
+function swap(array, firstIndex, secondIndex){
+  var temp = array[firstIndex];
+  array[firstIndex] = array[secondIndex];
+  array[secondIndex] = temp;
+}
+
+// find index of lowest number
+function indexOfMinimum(array, startIndex){
+  
+  // minValue equals start of sub array 
+  var lowestNumber = array[startIndex];
+  // minIndex equals first index of sub array
+  var  minIndex = startIndex;
+  
+  // for loop through array starting at startIndex +1 
+  for(var i = startIndex +1;i<array.length; i++){
+    // if array[i] is lower than lowestNumber
+    if(array[i] < lowestNumber){
+      minIndex = i;
+      lowestNumber = array[i];
+    }
+  }
+  return minIndex;
+}
+
+// function that calls previous 2 functions and returns array
+function selectionSort(array){
+  // indexOfLowestNumber
+  var indexOfLowestNumber;
+  
+  // for loop through array
+  for(var i = 0;i<array.length; i++){
+    // x equals indexOfMinimum(array,i)
+    x = indexOfMinimum(array,i);
+    // swap(array,i, x)
+    swap(array,i,x);
+  }
+  
+  // return array;
+  return array;
+}
+
+selectionSort([232,23,2,1,234245,34534,0,-1,-121,-23423]); -->
+
+
+
+
+
+<p><!-- pagebreak --></p> 
+<h2>Insertion Sort</h2>
+
+<p>Where a bubble sort relies on a number of small swaps, insertion sort relies on inserting a single element in the right for a given iteration. Every iteration through the collection leaves a greater segment sorted. Insertion sort starts with index 1 and progresses to the right of the array. Value at index 1 is saved to a temp variable, index 0 is copied to index 1.  If value at index 1 is less than at index 0, index 0 equals temp, if not it's put back at index 1. Then the process starts with index 2, index 1 and 0 pushed right, index 2 is compared with index 1, if greater than index 1, put back at 2, if less then compare with index 0, if greater than index 0 put at index 1, if less put at 0. Repeat until end of array.</p>
+
+<p>Here's another way to think about sorting. Imagine that you are playing a card game. You're holding the cards in your hand, and these cards are sorted. The dealer hands you exactly one new card. You have to put it into the correct place so that the cards you're holding are still sorted. In selection sort, each element that you add to the sorted subarray is no smaller than the elements already in the sorted subarray. But in our card example, the new card could be smaller than some of the cards you're already holding, and so you go down the line, comparing the new card against each card in your hand, until you find the place to put it. You insert the new card in the right place, and once again, your hand holds fully sorted cards. Then the dealer gives you another card, and you repeat the same procedure. Then another card, and another card, and so on, until the dealer stops giving you cards.</p>
+
+<!-- <br/> -->
+<p>Inefficient because it's basically 0(n^2) time complexity.</p>
+<img src="insertionSort.png" alt="">
+
+<!-- function insertionSort(array){
+  
+  for(var i = 1;i<array.length; i++){
+    var temp = array[i];
+    
+    for(var j = i-1; j >= 0 && (array[j] > temp); j--){
+      array[j + 1] = array[j];
+    }
+    array[j + 1] = temp;
+  }
+  return array;
+}
+
+
+var array = [22, 11, 99, 88, 9, 7, 42];
+insertionSort(array);
+ -->
+
+
+<p><!-- pagebreak --></p> 
+<h2>Bubble Sort</h2>
+
+<p>Bubble sort is the most basic way to sort a collection. It works by sequentially going through your array and comparing two values at a time, swapping them if necessary. It then repeats the process until no swaps are required. Compare value at index 0 with index 1, then index 1 with index 2, repeat until end of array.  Start over at index 1, compare with index 2, repeat. Start over at index 2, compare with index 3, repeat.  Very inneficient. </p>
+
+<img src="bubbleSort.png" alt="">
+
+<!-- function sort(values) {
+  var length = values.length - 1;
+  do {
+    var swapped = false;
+    for(var i = 0; i < length; ++i) {
+      if (values[i] > values[i+1]) {
+        var temp = values[i];
+        values[i] = values[i+1];
+        values[i+1] = temp;
+        swapped = true;
+      }
+    }
+  }
+  while(swapped == true)
+};
+sort([7, 4, 5, 2, 9, 1]);
+//finished -->
+
+
+<p><!-- pagebreak --></p> 
+<h2>Recursion</h2>
+
+<p>It is perfectly okay for a function to call itself, as long as it takes care not to overflow the stack. A function that calls itself is called recursive. Recursion allows some functions to be written in a different style. Take, for example, this alternative implementation of power:</p>
+
+<img src="recursive.png" alt="">
+
+<!-- function power(base, exponent) {
+  if (exponent == 0)
+    return 1;
+  else
+    return base * power(base, exponent - 1);
+}
+
+console.log(power(2, 3));
+// → 8
+ -->
+
+
+</body>
+</html>
