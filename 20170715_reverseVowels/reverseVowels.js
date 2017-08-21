@@ -33,3 +33,25 @@ function reverseVowels(str) {
 
 // reverseVowels('hello'); // "holle"
 // reverseVowels("leetcode"); // "leotcede"
+
+
+function reverseVowels(str) {
+
+  var vowels = ['a','e','i','o','u'];  
+  var found = [];
+  var arr = str.split('');
+  
+  for(var i=0; i < arr.length; i++){
+    if(vowels.includes(arr[i].toLowerCase())){
+      found.push(arr[i]);
+    }
+  }
+  
+  for(var i=0; i < arr.length; i++){
+    if(vowels.includes(arr[i].toLowerCase())){
+      arr[i] = found.pop();
+    }
+  }
+   
+  return arr.join(""); 
+}
