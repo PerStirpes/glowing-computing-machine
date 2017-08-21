@@ -14,7 +14,7 @@ sameFrequency(3589578, 5879385) // true
 sameFrequency(22,222) // false
 */
 
-```
+```js
 function sameFrequency(n1, n2){
   if (n1.length !== n2.length) {
     return false;
