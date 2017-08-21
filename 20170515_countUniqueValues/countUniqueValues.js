@@ -17,12 +17,22 @@ Bonus
 You must do this with constant or O(1) space and O(n) time.
 */
 
+function countUniqueValues(array) {
+    let uniqueCharCounter = array.length;
+    for (var i = 0, j = 1; j < array.length; i++, j++) {
+      if(array[i] === array[j]){
+        uniqueCharCounter--
+      }
+    }
+    return uniqueCharCounter; 
+}
+
 function countUniqueValues(arr){
   // 9:40
-  var counter = arr.length;
-  var i = 0;
-  var j = 1;
-  while (i < arr.length && j < arr.length) {
+  let counter = arr.length;
+  let i = 0;
+  let j = 1;
+  while (j < arr.length) {
     if (arr[i] === arr[j]) {
       counter--;
     }
