@@ -47,35 +47,53 @@
     *                                                        *
     **********************************************************/
 
-var insertionSort = function(input){
-  // your work here
+var insertionSort = function(arr){
+  for (let i = 0; i < arr.length; i++) {
+    let currentValue = arr[i];
+    for (var j = i - 1; j > -1 && arr[j] > currentValue; j--) {
+      arr[j+1] = arr[j];
+    }
+    arr[j+1] = currentValue;
+  }
+
+  return arr;
 }
 
 
-var selectionSort = function(input){
-  // your work here
+
+
+var selectionSort = function(arr){
+ 
+  for (let i = 0; i < arr.length; i++) {
+    let lowest = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[j] < arr[lowest]) {
+        lowest = j;
+      }
+    }
+    if (i !== lowest) swap(arr, i, lowest);
+  }
+
+  return arr;
 }
 
 
-var bubbleSort = function(input){
-  // your work here
+var bubbleSort = function(arr){
+  
+  for (let i = arr.length; i > 0; i--) {
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j, j + 1);
+      }
+    }
+  }
+  return arr;
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+function swap(arr, idx1, idx2) {
+  [arr[idx1],arr[idx2]] = [arr[idx2],arr[idx1]]
+}
 
 ////////////////////////////////////////////////////////////
 ///////////////  DO NOT TOUCH TEST BELOW!!!  ///////////////

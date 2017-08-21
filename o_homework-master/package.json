@@ -17,8 +17,10 @@
   },
   "dependencies": {
     "chai": "~3.4.1",
-    "gulp": "~3.9.0",
     "mocha": "~2.3.4",
     "gulp-shell": "~0.5.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
