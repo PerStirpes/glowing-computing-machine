@@ -14,6 +14,7 @@ sameFrequency(3589578, 5879385) // true
 sameFrequency(22,222) // false
 */
 
+```
 function sameFrequency(n1, n2){
   if (n1.length !== n2.length) {
     return false;
@@ -62,6 +63,7 @@ function sameFrequency(n1, n2) {
     }
     return Array.from(charCount.values()).every(val=>val === 0);
 }
+```
 
 # Algorithm to determine if two strings are an anagram
 > The anagram test is commonly used to demonstrate how an naivie implementation can perform significant order of magnitues slower than an efficient one.
