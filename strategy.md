@@ -102,9 +102,6 @@ Be careful not to mistakenly assume that just because there are multiple ```for-
 * **nested loops multiply**
 * **un-nested loops add**
 
-Lets go over a few different examples and analyze problems to see how nested versus un-nested loops affect the overall complexity of the algorithm.
-
-The problem here has a nested loop, lets evaluate this algorithm for time complexity:
 
 ```javascript
 // print all values that have a matching pairs
@@ -175,8 +172,6 @@ The basic list of algorithm patterns will help you progress throughout the first
 	* [Eloquent JavaScript - Recursion Section](http://eloquentjavascript.net/03_functions.html) 
 	* [Rithm School - Intro to Recursion](https://www.rithmschool.com/courses/javascript-computer-science-fundamentals/introduction-to-recursion)
 
-***Under Construction***
-
 ## 3. Learn Linear Data Structures
 
 * **Arrays and Dynamic Arrays:** Start here to learn more about arrays and dynamic arrays.  If you began your development journey learning Python, Ruby, or JavaScript, you may not have been exposed to primitive array data structures (continuous blocks of memory) because your language has abstracted the concept of arrays into a more powerful, more functional data structures. Lets jump back to the old times and find out what arrays really are under the hood.
@@ -187,9 +182,6 @@ The basic list of algorithm patterns will help you progress throughout the first
 	* [Visualgo - LinkedList, Stacks, Queues](https://visualgo.net/list)
 	* [Gayle McDowell - Stacks and Queues](https://www.youtube.com/watch?v=wjI1WNcIntg)
 
-More problem sets to come for these problems.
-
-*** Under Construction ***
 
 ## 4. Develop a Process for Problem Solving
 
@@ -245,8 +237,6 @@ Practice easy level algorithms to get into the groove of things. Remember the st
 * [Codewars](https://www.codewars.com/) -  Kata 7-8 problems
 * [Coderbyte](https://coderbyte.com/challenges#easyChals) - 10 Easy problems
 * 
-
-*After completing these problems, you should have a good shot at passing Outco's fundamentals check. If you are looking to apply/re-apply please reach out to the [Outco Outreach team](https://outco.io).*
 
 ## 6. Progress to Intermediate Concepts
 
